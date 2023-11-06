@@ -212,73 +212,80 @@ class _anaSayfaState extends State<anaSayfa> {
 
       drawer: YanMenu(),
       body: AnimationLimiter(
-        child: Container(
-
-          child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // İki sütunlu bir grid
-    ),
-    itemCount: items.length,
-    itemBuilder: (context, index) {
-          final item = items[index];
-          return AnimationConfiguration.staggeredGrid(
-            position: index,
-            columnCount: 2,
-            duration: const Duration(milliseconds: 500),
-            child: SlideAnimation(
-              verticalOffset: 50,
-              child: ScaleAnimation(
-                delay: Duration(milliseconds: 275),
-                child: GestureDetector(
-                  onLongPress: () {
-                    setState(() {
-                      showCloseIcons = true;
-                    });
-                  },
-                  child: Card(
-                    color: item.backgroundColor,
-                      child: Column(
-                       mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          if (showCloseIcons)
-                             Container(
-                               alignment: Alignment.topRight,
-                               child: IconButton(
-                                  icon: Icon(Icons.close, color: Colors.black),
-                                  onPressed: () {
-                                    setState(() {
-                                      items.remove(item);
-                                      //items.clear();//Hepsini siler
-                                      showCloseIcons = false;
-                                    });
-                                  },
-                                ),
-                             ),
-                          Column(
-                                children: [
-                                  Icon(item.icon, size: 64.0, color: Colors.white,),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    item.title,
-                                    style: TextStyle(fontSize: 18.0,color: Colors.white),
-                                  ),
-                                ],
-                              ),
-
-                        ],
-                      ),
-
-
-                  ),
-
-
-
-        ),
-              ),
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              showCloseIcons = false;
+            });
+          },
+          child: Container(
+        
+            child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // İki sütunlu bir grid
             ),
-          );
-    },
-    ),
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+            final item = items[index];
+            return AnimationConfiguration.staggeredGrid(
+              position: index,
+              columnCount: 2,
+              duration: const Duration(milliseconds: 500),
+              child: SlideAnimation(
+                verticalOffset: 50,
+                child: ScaleAnimation(
+                  delay: Duration(milliseconds: 275),
+                  child: GestureDetector(
+                    onLongPress: () {
+                      setState(() {
+                        showCloseIcons = true;
+                      });
+                    },
+                    child: Card(
+                      color: item.backgroundColor,
+                        child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            if (showCloseIcons)
+                               Container(
+                                 alignment: Alignment.topRight,
+                                 child: IconButton(
+                                    icon: Icon(Icons.close, color: Colors.red),
+                                    onPressed: () {
+                                      setState(() {
+                                        items.remove(item);
+                                        //items.clear();//Hepsini siler
+                                       // showCloseIcons = false;
+                                      });
+                                    },
+                                  ),
+                               ),
+                            Column(
+                                  children: [
+                                    Icon(item.icon, size: 64.0, color: Colors.white,),
+                                    SizedBox(height: 8.0),
+                                    Text(
+                                      item.title,
+                                      style: TextStyle(fontSize: 18.0,color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+        
+                          ],
+                        ),
+        
+        
+                    ),
+        
+        
+        
+          ),
+                ),
+              ),
+            );
+            },
+            ),
+          ),
         ),
       ),
     );

@@ -149,7 +149,7 @@ class _lisansSayfasiState extends State<lisansSayfasi> {
                               child: ElevatedButton(
                                 onPressed: (){
 
-                                }, child: Text("Giriş Yap"),
+                                }, child: Text("Kaydet"),
                                 style: ElevatedButton.styleFrom(
                                     primary: Colors.grey
                                 ),),

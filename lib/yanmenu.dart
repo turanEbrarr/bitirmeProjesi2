@@ -125,14 +125,14 @@ class _YanMenuState extends State<YanMenu> {
                     child: Padding(padding: EdgeInsets.only(left: 10.0),
                     child: ListTile(
                       leading: Icon(Icons.shopping_bag,color: Colors.white,),
-                      title: Text('Satış Fatura Kayıt',style: TextStyle(color: Colors.white),),
+                      title: Text('Satış Fatura',style: TextStyle(color: Colors.white),),
                     ),),
                   ),
                   Container(
                     child: Padding(padding: EdgeInsets.only(left: 10.0),
                       child: ListTile(
                         leading: Icon(Icons.receipt_long,color: Colors.white,),
-                        title: Text('Alış İrsaliye Kayıt',style: TextStyle(color: Colors.white),),
+                        title: Text('Alış Fatura',style: TextStyle(color: Colors.white),),
                       ),),
                   ),
                 ]

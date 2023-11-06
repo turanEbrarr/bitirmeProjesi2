@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
  // bool durum=true;
 //  bool durum2=false;
 bool isChanged=false;
+bool sifreGozuksunMu=false;
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +121,7 @@ bool isChanged=false;
                                   width: 500,
                                   height: 60,
                                   child: TextFormField(
+                                    
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return null;
@@ -128,11 +130,22 @@ bool isChanged=false;
                                     onSaved: (value) {
 
                                     },
-                                    obscureText: true,
+                                    obscureText: sifreGozuksunMu,
                                     enableSuggestions: false,
                                     autocorrect: false,
                                     decoration: InputDecoration(
+                                      
                                       prefixIcon: Icon(Icons.lock),
+                                      suffixIcon: IconButton(onPressed: () {
+                                        setState(() {
+                                          sifreGozuksunMu=!sifreGozuksunMu;
+                                        });
+                                        
+                                      },
+                                        icon: 
+                                        
+                                        sifreGozuksunMu == true ? Icon(Icons.visibility_off):Icon(Icons.visibility)),
+
                                         hintText: "Şifre",
                                         filled: true,
                                         fillColor: Colors.white60,
